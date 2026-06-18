@@ -22,9 +22,6 @@ public class Rsvp {
     @NotBlank
     private String attending;
 
-    @NotBlank
-    private String meal;
-
     public Rsvp() {
     }
 
@@ -36,6 +33,5 @@ public class Rsvp {
     public void setGuests(String guests) { this.guests = guests; }
     public String getAttending() { return attending; }
     public void setAttending(String attending) { this.attending = attending; }
-    public String getMeal() { return meal; }
-    public void setMeal(String meal) { this.meal = meal; }
+
 }

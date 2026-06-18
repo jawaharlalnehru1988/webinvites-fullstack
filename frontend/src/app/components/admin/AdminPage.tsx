@@ -6,7 +6,6 @@ interface Rsvp {
   name: string;
   guests: string;
   attending: string;
-  meal: string;
 }
 
 export function AdminPage() {
@@ -29,7 +28,7 @@ export function AdminPage() {
     setError("");
     try {
       const basicToken = btoa(`${username}:${password}`);
-      const res = await fetch("http://localhost:8080/api/admin/verify", {
+      const res = await fetch("/api/admin/verify", {
         method: "GET",
         headers: { "Authorization": `Basic ${basicToken}` }
       });
@@ -54,7 +53,7 @@ export function AdminPage() {
   async function fetchRsvps() {
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:8080/api/rsvp", {
+      const res = await fetch("/api/rsvp", {
         headers: { "Authorization": `Basic ${token}` }
       });
       if (res.ok) {
@@ -127,7 +126,6 @@ export function AdminPage() {
                   <th className="py-3 px-4 font-semibold">Name</th>
                   <th className="py-3 px-4 font-semibold">Guests</th>
                   <th className="py-3 px-4 font-semibold">Attending</th>
-                  <th className="py-3 px-4 font-semibold">Meal</th>
                 </tr>
               </thead>
               <tbody>
@@ -145,7 +143,6 @@ export function AdminPage() {
                           {rsvp.attending}
                         </span>
                       </td>
-                      <td className="py-3 px-4 capitalize">{rsvp.meal}</td>
                     </tr>
                   ))
                 )}

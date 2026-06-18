@@ -8,14 +8,13 @@ export function RSVPSection() {
     name: "",
     guests: "",
     attending: "yes",
-    meal: "veg",
   });
   const [submitted, setSubmitted] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:8080/api/rsvp", {
+      const response = await fetch("/api/rsvp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form)
@@ -146,27 +145,7 @@ export function RSVPSection() {
             </div>
           </div>
 
-          {/* Meal Preference */}
-          <div className="flex flex-col gap-3">
-            <label style={labelStyle}>Meal Preference</label>
-            <div className="flex flex-wrap gap-6">
-              {[
-                { value: "veg", label: "Vegetarian" },
-                { value: "nonveg", label: "Non-Vegetarian" },
-                { value: "jain", label: "Jain" },
-              ].map(({ value, label }) => (
-                <button
-                  key={value}
-                  type="button"
-                  className="flex items-center gap-3"
-                  onClick={() => setForm({ ...form, meal: value })}
-                >
-                  <RadioButton selected={form.meal === value} />
-                  <span style={{ fontFamily: "'Hind', sans-serif", fontSize: 18 }}>{label}</span>
-                </button>
-              ))}
-            </div>
-          </div>
+
 
           {/* Submit */}
           <button

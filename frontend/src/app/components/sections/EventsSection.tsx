@@ -129,13 +129,13 @@ const EVENTS: EventInfo[] = [
   },
   {
     title: "Wedding",
-    date: "Tuesday, June 23, 2026",
+    date: "Tuesday, June 24, 2026",
     time: "7:00 PM Onwards",
     venue: "Mahajan Grand Banquet, Sainath Nagar, Majiwada, Thane",
   },
   {
     title: "Reception",
-    date: "Tuesday, June 23, 2026",
+    date: "Tuesday, June 24, 2026",
     time: "8:30 PM Onwards",
     venue: "Mahajan Grand Banquet, Sainath Nagar, Majiwada, Thane",
   },
