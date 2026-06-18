@@ -51,7 +51,7 @@ export function HeroSection() {
         onTimeUpdate={handleTimeUpdate}
         className="w-full h-auto block"
       >
-        <source src="/videos/Hero%20Video.mp4" type="video/mp4" />
+        <source src="/videos/Hero%20Video%204mb.mp4" type="video/mp4" />
       </video>
 
       {/* Show play instruction if not playing */}
