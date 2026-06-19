@@ -27,16 +27,8 @@ export function HeroSection() {
     }
   };
 
-  const handleTimeUpdate = () => {
-    if (videoRef.current && !hasCompletedOneCycle) {
-      const { currentTime, duration } = videoRef.current;
-      // Pause the video right before it reaches the end so it plays exactly once
-      // We keep the loop attribute on the video tag to prevent early stop bugs
-      if (duration && currentTime >= duration - 0.2) {
-        videoRef.current.pause();
-        setHasCompletedOneCycle(true);
-      }
-    }
+  const handleEnded = () => {
+    setHasCompletedOneCycle(true);
   };
 
   return (
@@ -47,8 +39,7 @@ export function HeroSection() {
       <video
         ref={videoRef}
         playsInline
-        loop
-        onTimeUpdate={handleTimeUpdate}
+        onEnded={handleEnded}
         className="w-full h-auto block"
       >
         <source src="/videos/Hero%20Video%204mb.mp4" type="video/mp4" />

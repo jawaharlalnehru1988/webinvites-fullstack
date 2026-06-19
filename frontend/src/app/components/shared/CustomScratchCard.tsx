@@ -6,6 +6,7 @@ interface ScratchCardProps {
   height: number;
   coverColor?: string;
   brushSize?: number;
+  onComplete?: () => void;
 }
 
 export function CustomScratchCard({
@@ -14,6 +15,7 @@ export function CustomScratchCard({
   height,
   coverColor = "#bc9268",
   brushSize = 40,
+  onComplete,
 }: ScratchCardProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isCleared, setIsCleared] = useState(false);
@@ -79,6 +81,9 @@ export function CustomScratchCard({
       const totalPixels = width * height;
       if (transparentPixels / totalPixels > 0.5) { // 50% scratched
         setIsCleared(true);
+        if (onComplete) {
+          onComplete();
+        }
         canvas.style.transition = "opacity 0.5s ease-out";
         canvas.style.opacity = "0";
         setTimeout(() => {
@@ -104,7 +109,7 @@ export function CustomScratchCard({
       canvas.removeEventListener("touchmove", handleMove);
       window.removeEventListener("touchend", handleEnd);
     };
-  }, [width, height, coverColor, brushSize, isCleared]);
+  }, [width, height, coverColor, brushSize, isCleared, onComplete]);
 
   return (
     <div style={{ position: "relative", width, height, userSelect: "none" }}>
