@@ -40,7 +40,7 @@ export function HeroSection() {
   };
 
   return (
-    <section 
+    <section
       className="relative w-full bg-white cursor-pointer"
       onClick={handleInteraction}
     >
@@ -56,13 +56,13 @@ export function HeroSection() {
 
       {/* Show play instruction if not playing */}
       {!isPlaying && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black/30 transition-opacity">
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center justify-center bg-transparent transition-opacity">
           <div className="flex flex-col items-center gap-4">
-            <span 
-              className="text-white tracking-widest uppercase text-xl md:text-2xl"
+            <span
+              className="text-white tracking-widest uppercase text-sm md:text-base"
               style={{ fontFamily: "'EB Garamond', serif" }}
             >
-              Tap to Play
+              Click to Open
             </span>
           </div>
         </div>
