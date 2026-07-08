@@ -8,6 +8,7 @@ import { RSVPSection } from "./components/sections/RSVPSection";
 import { ClosingSection } from "./components/sections/ClosingSection";
 import { FooterSection } from "./components/sections/FooterSection";
 import { AdminPage } from "./components/admin/AdminPage";
+import { AnimatedTemplatePage } from "./pages/AnimatedTemplatePage";
 
 function InvitationPage() {
   return (
@@ -32,6 +33,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<InvitationPage />} />
         <Route path="/admin" element={<AdminPage />} />
+        <Route path="/animated-template" element={<AnimatedTemplatePage />} />
       </Routes>
     </BrowserRouter>
   );
