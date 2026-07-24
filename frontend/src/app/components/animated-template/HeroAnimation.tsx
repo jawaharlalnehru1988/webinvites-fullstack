@@ -161,18 +161,17 @@ export function HeroAnimation() {
   useEffect(() => {
     if (isPlaying) return;
 
-    const onScrollOrTouch = () => {
+    const onUserInteraction = () => {
       handleStartSequence();
     };
 
-    window.addEventListener('scroll', onScrollOrTouch, { capture: true, passive: true, once: true });
-    window.addEventListener('wheel', onScrollOrTouch, { capture: true, passive: true, once: true });
-    window.addEventListener('touchmove', onScrollOrTouch, { capture: true, passive: true, once: true });
+    // Use wheel and touchmove instead of 'scroll' to avoid false positives on page load
+    window.addEventListener('wheel', onUserInteraction, { capture: true, passive: true, once: true });
+    window.addEventListener('touchmove', onUserInteraction, { capture: true, passive: true, once: true });
 
     return () => {
-      window.removeEventListener('scroll', onScrollOrTouch, { capture: true } as any);
-      window.removeEventListener('wheel', onScrollOrTouch, { capture: true } as any);
-      window.removeEventListener('touchmove', onScrollOrTouch, { capture: true } as any);
+      window.removeEventListener('wheel', onUserInteraction, { capture: true } as any);
+      window.removeEventListener('touchmove', onUserInteraction, { capture: true } as any);
     };
   }, [isPlaying, isReduced]);
 
@@ -220,7 +219,7 @@ export function HeroAnimation() {
 
       <div className="cover-title" id="coverTitle">
         <h1 className="title-names">Hari<span className="title-weds">weds</span>Rukmini</h1>
-        <div className="cover-hint">tap anywhere to open</div>
+        <div className="cover-hint">tap or scroll to open</div>
       </div>
 
       <div className="final-title" id="finalTitle">
